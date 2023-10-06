@@ -10,9 +10,7 @@
     "newtab": "popup.html"
   },
   "permissions": [
-    "storage",
     "bookmarks",
-    "activeTab",
 	"favicon"
   ]
 }
