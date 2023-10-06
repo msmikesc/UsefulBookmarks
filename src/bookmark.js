@@ -99,21 +99,21 @@ function setupFolderClickListeners() {
 }
 
 function openLink(url, newTab) {
-  chrome.tabs.getCurrent(function (tab) {
+  chrome.tabs.getCurrent(function(tab) {
     if (newTab) {
-      void chrome.tabs.create({ url: url, active: newTab === 1, openerTabId: tab.id });
+      void chrome.tabs.create({url: url, active: newTab === 1, openerTabId: tab.id});
     } else {
-      void chrome.tabs.update(tab.id, { url: url });
+      void chrome.tabs.update(tab.id, {url: url});
     }
   });
 }
 
 function fixChromePages() {
-  const links = document.getElementsByClassName("top-link");
+  const links = document.getElementsByClassName('top-link');
 
   for (const child of links) {
-    child.addEventListener('click', function () {
-      openLink(this.getAttribute("click-link"), 0);
+    child.addEventListener('click', function() {
+      openLink(this.getAttribute('click-link'), 0);
     });
   }
 }
@@ -125,11 +125,11 @@ function whatToDoWhenTreeIsLoaded(tree) {
 
   printAllBookmarks(tree[0].children);
 
-  const folders = document.getElementsByClassName("folder-link");
+  const folders = document.getElementsByClassName('folder-link');
 
   let i;
   for (i = 0; i < folders.length; i++) {
-    folders[i].addEventListener('click', function () {
+    folders[i].addEventListener('click', function() {
       printOnePageById(this.id);
     });
   }
@@ -138,12 +138,12 @@ function whatToDoWhenTreeIsLoaded(tree) {
 function printOnePageById(id) {
   document.getElementById('list').innerHTML = '';
   document.getElementById('list-bar').innerHTML = '';
-  
+
   // Get the tree asynchronously
   chrome.bookmarks.getSubTree(id.toString(), whatToDoWhenTreeIsLoaded);
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
   printOnePageById(2);
   setupFolderClickListeners();
   fixChromePages(); // Call the fixChromePages function here
