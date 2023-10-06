@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+  <head>
+    <title>New Tab</title>
+    <link rel='shortcut icon' type='image/png' href='favicon.png' />
+    <style>
+      body {
+        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+        font-size: 75%;
+        padding:0;
+        margin:0;
+        height:100%;
+        background-color:#103d50;
+        overflow:hidden;
+      }
+      a{
+        display:inline-block;
+        border-radius: 15px;
+        margin:2px;
+      }
+      h2{
+        display:inline;
+        font-size:300%;
+      }
+      li{
+        display:inline;
+        style:none;
+        margin:0px;
+      }
+      ul{
+        margin:1px;
+        padding:0px;
+      }
+      .bookDiv{
+        vertical-align:top;
+        display:inline-block;
+        width:2px;
+        height:80px;
+        overflow:visible;
+        margin: 0px;
+        padding-left:45px;
+        padding-right:45px;
+        padding-bottom:10px;
+        position:relative;
+      }
+      .bookDivSpacer{
+        width:200px;
+        position: absolute;
+        left: 50%;
+        margin-left: -100px;
+        overflow:visible;
+      }      
+      .bookA{
+        z-index:999;
+        border-radius: 15px;
+        border:1px solid #033145;
+        background-color:#033145;
+        width:82px;
+        height:78px;
+        transition:.2s;
+        padding:2px;
+        padding-top:3px;
+        display:inline-block;
+        text-decoration: none;
+        overflow:hidden;
+        position:relative;
+        cursor: pointer;
+      }
+      .bookA:hover{
+        z-index:9999;
+        background-color:#16783b;
+        width:100px;
+        height:auto;
+        min-height:78px;
+      }
+      .upDiv{
+        border-radius: 15px;
+        border:1px solid #033145;
+        vertical-align:top;
+        display:inline-block;
+        background-color:#033145;
+        text-align:center;
+        width:40px;
+        height:37px;
+        padding:1px;
+        overflow-y:hidden;
+        transition:.2s;
+      }
+      .upDiv:hover{
+        background-color:#16783b;
+      }
+      .appDiv{
+        border-radius: 15px;
+        border:1px solid #033145;
+        vertical-align:top;
+        display:inline-block;
+        background-color:#033145;
+        text-align:center;
+        width:82px;
+        height:70px;
+        padding:4px;
+        padding-bottom:1px;
+        overflow:hidden;
+        transition:.2s;
+        cursor: pointer;
+      }
+      .appDiv:hover{
+        background-color:#16783b;
+      }
+      .bookIcon{
+        display:block;
+        margin-left:auto;
+        margin-right:auto;
+        image-rendering: auto;
+      }
+      .bookText{
+        display:inline-block;
+        color:white;
+        word-wrap:break-word;
+        width:82px;
+        margin:0px;
+      }
+      .topLink{
+        border-radius: 8px;
+        vertical-align:top;
+        display:inline-block;
+        background-color:#98bdcd;
+        color:black;
+        text-align:center;
+        transition:.2s;
+        padding:2px;
+        text-decoration:none;
+        margin:0px;
+        margin-top:1px;
+        margin-bottom:1px;
+      }
+      .topLink:hover{
+        background-color:#033145;
+        color:white;
+      }
+	  .parent-link {
+		  float: left;
+		}
+      #list{
+        text-align:center;
+        padding-left:10px;
+        padding-right:10px;
+      }
+      #listbar{
+        text-align:right;
+        padding-left:10px;
+        padding-right:10px;
+      }
+      #sectionwrap{
+        border:2px solid #033145;
+        border-radius: 15px;
+        padding:5px;
+        margin:5px;
+        position: absolute;
+        top: 40px;
+        right: 0;
+        bottom: 1px;
+        left: 0;
+        background-color:#467386;
+      }
+      #headerwrap{
+        border-radius: 15px;
+        margin:5px;
+        margin-left:50px;
+        margin-right:50px;
+        text-align:center;
+        border:2px solid #033145;
+        background-color:#467386;
+      }
+    </style>
+    <script src="bookmark.js"></script>
+  </head>
+  <body>
+    <div id="headerwrap">
+      <div id="headerbar">
+      <ul>
+      <li><a name="unblockme" class="topLink" link="chrome://history">History</a></li>
+      <li><a name="unblockme" class="topLink" link="chrome://extensions">Extensions</a></li>
+	  <li><a name="unblockme" class="topLink" link="chrome://downloads">Downloads</a></li>
+      <li><a name="unblockme" class="topLink" link="chrome://settings">Settings</a></li>
+      <li><a name="unblockme" class="topLink" link="chrome://apps">Apps</a></li>
+      <li><a name="unblockme" class="topLink" link="chrome://flags">Flags</a></li>
+      <li><a name="unblockme" class="topLink" link="chrome://bookmarks">Edit</a></li>
+      </ul>
+      </div>
+      <div id="header"></div>
+    </div>
+    
+    <div id="sectionwrap">
+      <div id="listbar"></div>
+      <div id="list"></div>
+    </div>
+  </body>
+</html>
+

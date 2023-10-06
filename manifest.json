@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "UsefulBookmarks",
+  "description": "Useful Bookmark viewer",
+  "version": "1.2",
+  "icons": {
+    "16": "favicon.png"
+  },
+  "chrome_url_overrides": {
+    "newtab": "popup.html"
+  },
+  "permissions": [
+    "storage",
+    "bookmarks",
+    "activeTab",
+	"favicon"
+  ]
+}
