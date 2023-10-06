@@ -1,26 +1,31 @@
 function outputParent(parentId, title) {
-  const parentLink = document.createElement('a');
-  parentLink.className = 'parent-link folder-link';
-  parentLink.id = parentId;
-
-  const upDiv = document.createElement('div');
-  upDiv.className = 'upDiv';
-
-  const icon = document.createElement('img');
-  icon.className = 'bookIcon';
-  icon.width = 32;
-  icon.height = 32;
-  icon.src = 'folder_up_icon.png';
-
-  upDiv.appendChild(icon);
-  parentLink.appendChild(upDiv);
-
-  const h2 = document.createElement('h2');
-  h2.textContent = title;
-
   const listBar = document.getElementById('list-bar');
   listBar.innerHTML = ''; // Clear previous content
-  listBar.appendChild(parentLink);
+
+  if (title) {
+    const parentLink = document.createElement('a');
+    parentLink.className = 'parent-link folder-link';
+    parentLink.id = parentId;
+
+    const upDiv = document.createElement('div');
+    upDiv.className = 'upDiv';
+
+    const icon = document.createElement('img');
+    icon.className = 'bookIcon';
+    icon.width = 32;
+    icon.height = 32;
+    icon.src = 'folder_up_icon.png';
+
+    upDiv.appendChild(icon);
+    parentLink.appendChild(upDiv);
+    listBar.appendChild(parentLink);
+  }
+
+  const h2 = document.createElement('h2');
+  if (!title) {
+    title = 'All Bookmarks';
+  }
+  h2.textContent = title;
   listBar.appendChild(h2);
 }
 
