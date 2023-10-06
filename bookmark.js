@@ -1,8 +1,7 @@
 function outputParent(parentId, title) {
   const parentLink = document.createElement('a');
-  parentLink.className = 'parent-link';
+  parentLink.className = 'parent-link folder-link';
   parentLink.id = parentId;
-  parentLink.name = 'link';
 
   const upDiv = document.createElement('div');
   upDiv.className = 'upDiv';
@@ -19,10 +18,10 @@ function outputParent(parentId, title) {
   const h2 = document.createElement('h2');
   h2.textContent = title;
 
-  const listbar = document.getElementById('listbar');
-  listbar.innerHTML = ''; // Clear previous content
-  listbar.appendChild(parentLink);
-  listbar.appendChild(h2);
+  const listBar = document.getElementById('list-bar');
+  listBar.innerHTML = ''; // Clear previous content
+  listBar.appendChild(parentLink);
+  listBar.appendChild(h2);
 }
 
 function createFolderElement(bookmark) {
@@ -31,8 +30,7 @@ function createFolderElement(bookmark) {
   const folderSpacerElement = document.createElement('div');
   folderSpacerElement.className = 'bookDivSpacer';
   const anchorElement = document.createElement('a');
-  anchorElement.className = 'bookA';
-  anchorElement.name = 'link';
+  anchorElement.className = 'bookA folder-link';
   anchorElement.id = bookmark.id;
   const iconElement = document.createElement('img');
   iconElement.className = 'bookIcon';
@@ -89,7 +87,7 @@ function printAllBookmarks(bookmarks) {
 function handleFolderClick(event) {
   const id = event.target.id;
   document.getElementById('list').innerHTML = '';
-  document.getElementById('listbar').innerHTML = '';
+  document.getElementById('list-bar').innerHTML = '';
   chrome.bookmarks.getSubTree(id.toString(), whatToDoWhenTreeIsLoaded);
 }
 
@@ -100,35 +98,36 @@ function setupFolderClickListeners() {
   });
 }
 
-function openLink(url, newtab) {
+function openLink(url, newTab) {
   chrome.tabs.getCurrent(function (tab) {
-    if (newtab) {
-      chrome.tabs.create({ url: url, active: newtab === 1, openerTabId: tab.id });
+    if (newTab) {
+      void chrome.tabs.create({ url: url, active: newTab === 1, openerTabId: tab.id });
     } else {
-      chrome.tabs.update(tab.id, { url: url });
+      void chrome.tabs.update(tab.id, { url: url });
     }
   });
 }
 
 function fixChromePages() {
-  const links = document.getElementsByName("unblockme");
-  links.forEach((link) => {
-    link.addEventListener('click', function () {
-      openLink(this.getAttribute("link"), 0);
+  const links = document.getElementsByClassName("top-link");
+
+  for (const child of links) {
+    child.addEventListener('click', function () {
+      openLink(this.getAttribute("click-link"), 0);
     });
-  });
+  }
 }
 
 function whatToDoWhenTreeIsLoaded(tree) {
-  if (tree[0].id != 0) {
+  if (tree[0].id !== 0) {
     outputParent(tree[0].parentId, tree[0].title);
   }
 
   printAllBookmarks(tree[0].children);
 
-  var folders = document.getElementsByName("link");
+  const folders = document.getElementsByClassName("folder-link");
 
-  var i = 0;
+  let i;
   for (i = 0; i < folders.length; i++) {
     folders[i].addEventListener('click', function () {
       printOnePageById(this.id);
@@ -138,7 +137,7 @@ function whatToDoWhenTreeIsLoaded(tree) {
 
 function printOnePageById(id) {
   document.getElementById('list').innerHTML = '';
-  document.getElementById('listbar').innerHTML = '';
+  document.getElementById('list-bar').innerHTML = '';
   
   // Get the tree asynchronously
   chrome.bookmarks.getSubTree(id.toString(), whatToDoWhenTreeIsLoaded);

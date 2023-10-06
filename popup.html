@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <title>New Tab</title>
     <link rel='shortcut icon' type='image/png' href='favicon.png' />
@@ -24,12 +24,11 @@
       }
       li{
         display:inline;
-        style:none;
-        margin:0px;
+        margin:0;
       }
       ul{
         margin:1px;
-        padding:0px;
+        padding:0;
       }
       .bookDiv{
         vertical-align:top;
@@ -37,7 +36,7 @@
         width:2px;
         height:80px;
         overflow:visible;
-        margin: 0px;
+        margin: 0;
         padding-left:45px;
         padding-right:45px;
         padding-bottom:10px;
@@ -58,8 +57,7 @@
         width:82px;
         height:78px;
         transition:.2s;
-        padding:2px;
-        padding-top:3px;
+        padding: 3px 2px 2px;
         display:inline-block;
         text-decoration: none;
         overflow:hidden;
@@ -98,8 +96,7 @@
         text-align:center;
         width:82px;
         height:70px;
-        padding:4px;
-        padding-bottom:1px;
+        padding: 4px 4px 1px;
         overflow:hidden;
         transition:.2s;
         cursor: pointer;
@@ -118,9 +115,9 @@
         color:white;
         word-wrap:break-word;
         width:82px;
-        margin:0px;
+        margin:0;
       }
-      .topLink{
+      .top-link{
         border-radius: 8px;
         vertical-align:top;
         display:inline-block;
@@ -130,28 +127,26 @@
         transition:.2s;
         padding:2px;
         text-decoration:none;
-        margin:0px;
-        margin-top:1px;
-        margin-bottom:1px;
+        margin: 1px 0;
       }
-      .topLink:hover{
+      .top-link:hover{
         background-color:#033145;
         color:white;
       }
 	  .parent-link {
 		  float: left;
-		}
+      }
       #list{
         text-align:center;
         padding-left:10px;
         padding-right:10px;
       }
-      #listbar{
+      #list-bar{
         text-align:right;
         padding-left:10px;
         padding-right:10px;
       }
-      #sectionwrap{
+      #section-wrap{
         border:2px solid #033145;
         border-radius: 15px;
         padding:5px;
@@ -163,11 +158,9 @@
         left: 0;
         background-color:#467386;
       }
-      #headerwrap{
+      #header-wrap{
         border-radius: 15px;
-        margin:5px;
-        margin-left:50px;
-        margin-right:50px;
+        margin: 5px 50px;
         text-align:center;
         border:2px solid #033145;
         background-color:#467386;
@@ -176,23 +169,23 @@
     <script src="bookmark.js"></script>
   </head>
   <body>
-    <div id="headerwrap">
-      <div id="headerbar">
+    <div id="header-wrap">
+      <div id="header-bar">
       <ul>
-      <li><a name="unblockme" class="topLink" link="chrome://history">History</a></li>
-      <li><a name="unblockme" class="topLink" link="chrome://extensions">Extensions</a></li>
-	  <li><a name="unblockme" class="topLink" link="chrome://downloads">Downloads</a></li>
-      <li><a name="unblockme" class="topLink" link="chrome://settings">Settings</a></li>
-      <li><a name="unblockme" class="topLink" link="chrome://apps">Apps</a></li>
-      <li><a name="unblockme" class="topLink" link="chrome://flags">Flags</a></li>
-      <li><a name="unblockme" class="topLink" link="chrome://bookmarks">Edit</a></li>
+      <li><a class="top-link" click-link="chrome://history">History</a></li>
+      <li><a class="top-link" click-link="chrome://extensions">Extensions</a></li>
+	  <li><a class="top-link" click-link="chrome://downloads">Downloads</a></li>
+      <li><a class="top-link" click-link="chrome://settings">Settings</a></li>
+      <li><a class="top-link" click-link="chrome://apps">Apps</a></li>
+      <li><a class="top-link" click-link="chrome://flags">Flags</a></li>
+      <li><a class="top-link" click-link="chrome://bookmarks">Edit</a></li>
       </ul>
       </div>
       <div id="header"></div>
     </div>
     
-    <div id="sectionwrap">
-      <div id="listbar"></div>
+    <div id="section-wrap">
+      <div id="list-bar"></div>
       <div id="list"></div>
     </div>
   </body>
