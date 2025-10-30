@@ -148,9 +148,16 @@ function printOnePageById(id) {
   chrome.bookmarks.getSubTree(id.toString(), whatToDoWhenTreeIsLoaded);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  printOnePageById(2);
-  setupFolderClickListeners();
-  fixChromePages(); // Call the fixChromePages function here
+document.addEventListener('DOMContentLoaded', async function() {
+  const rootChildren = (await chrome.bookmarks.getTree())[0].children;
+
+  for (const child of rootChildren) {
+    if (child.title === 'Other bookmarks') {
+      printOnePageById(child.id);
+      setupFolderClickListeners();
+      fixChromePages();
+      break;
+    }
+  }
 });
 
